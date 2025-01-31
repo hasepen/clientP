@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRODUCTS / SHOP | HITOto</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ヘッダー（ハンバーガーメニュー） -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="site-logo">
+        <a href="index.html">HITOto</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="global-nav" id="globalNav">
+        <ul>
+          <li><a href="brand.html">BRAND</a></li>
+          <li><a href="product.html" class="active">PRODUCTS</a></li>
+          <li><a href="news.html">NEWS</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="cart.html">CART</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メインビジュアル or タイトルエリア -->
+  <section class="hero container">
+    <div class="hero-image img-placeholder">
+      <!-- グレーの仮画像 -->
+    </div>
+    <div class="hero-text text-limiter">
+      <h1>PRODUCTS</h1>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- 商品一覧リードテキスト -->
+    <section class="product-list text-limiter">
+      <p class="lead-text">
+        HITOtoは、毎日の暮らしの中で“サロン級のケア”を体感できるよう、
+        厳選した成分と妥協のない開発姿勢で生まれたスキンケアブランドです。<br>
+        忙しい日々でも手軽に、心まで整うワンランク上のケアを。
+      </p>
+
+      <!-- 商品リスト表示 -->
+      <div class="product-item">
+        <div class="product-img img-placeholder">
+          <!-- ハーブピーリングジェルウォッシュ画像の仮置き -->
+        </div>
+        <div class="product-info">
+          <h3>HERB PEELING GEL WASH</h3>
+          <p>ハーブピーリングジェルウォッシュ（洗顔料）</p><br>
+          <p>
+            ハーブピーリング発想なのに、毎日洗えるやさしさが特徴のジェル状クレンジング。<br>皮脂や汚れを余すことなくオフしながら、
+            発酵成分やサイタイ血幹細胞エクソソーム<span class="footnote">※</span>でハリツヤ満ちる肌へ。<br>
+            <span class="footnote">※ヒトサイタイ血由来幹細胞エクソソーム（保湿成分）</span>
+          </p>
+          <a href="product/herb-peeling.html" class="btn">CHECK→</a>
+        </div>
+      </div>
+
+      <div class="product-item reverse">
+        <div class="product-img img-placeholder">
+          <!-- リターンミルクセラム画像の仮置き -->
+        </div>
+        <div class="product-info">
+          <h3>RETURN MILK SERUM</h3>
+          <p>リターンミルクセラム（導入美容液）</p><br>
+          <p>
+            赤ちゃんにミルクを与えるように、肌へ“たっぷりの栄養”と“やさしさ”を。
+            忙しさから乾燥・くすみ<span class="footnote">※</span>・肌荒れなどの
+            トラブルを抱えがちな毎日を、刺激を抑えたミルクセラムが包み込むようにケア。<br>
+            <span class="footnote">※乾燥によるもの</span>
+          </p>
+          <a href="product/return-milk-serum.html" class="btn">CHECK→</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="footer-social">
+      <a href="#" class="img-placeholder icon-placeholder">Instagram</a>
+      <a href="#" class="img-placeholder icon-placeholder">X</a>
+    </div>
+    <div class="footer-links">
+      <a href="contact.html">お問い合わせ</a>
+      <a href="company.html">会社概要</a>
+      <a href="law.html">特定商取引法に基づく表記</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="terms.html">ご利用規約</a>
+    </div>
+    <p class="copyright">
+      COPYRIGHT © PEEK ALL RIGHTS RESERVED
+    </p>
+  </footer>
+
+  <!-- ハンバーガーメニューのJS -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const globalNav = document.getElementById('globalNav');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      globalNav.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

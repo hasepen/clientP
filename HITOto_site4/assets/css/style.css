@@ -1,0 +1,780 @@
+/* ===============================
+   Global Reset & Basic Styles
+=============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* ===============================
+   Container & Layout
+=============================== */
+.container {
+  width: 90%;
+  max-width: 1200px; 
+  margin: 0 auto;
+}
+
+/* テキスト領域は最大800pxに */
+.text-limiter {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 仮画像用 */
+.img-placeholder {
+  background-color: #ccc;
+  display: block;
+  /* デバッグ用に枠線を付ける場合
+     border: 2px solid red; */
+  width: 100%;
+  height: 200px;
+}
+
+/* アイコン用 */
+.icon-placeholder {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #aaa;
+  color: #000;
+  margin-right: 8px;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+/* ===============================
+   Buttons
+=============================== */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  margin-top: 8px;
+  border-radius: 4px;
+}
+.btn:hover {
+  background-color: #555;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #555;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.cta-btn:hover {
+  background-color: #777;
+}
+
+/* Footnote注釈を12pxに */
+.footnote {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ===============================
+   Header & Hamburger Menu
+=============================== */
+.site-header {
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ddd;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.site-logo a {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+/* ハンバーガーアイコン */
+.hamburger {
+  display: inline-block;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  margin-bottom: 5px;
+  transition: 0.3s;
+}
+.hamburger span:nth-child(3) {
+  margin-bottom: 0;
+}
+
+/* ナビゲーション */
+.global-nav {
+  position: relative;
+}
+.global-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+.global-nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* PC幅 */
+@media(min-width: 768px) {
+  .hamburger {
+    display: none; /* PC幅ではハンバーガー非表示 */
+  }
+}
+
+/* SP幅 */
+@media(max-width: 767px) {
+  .global-nav {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #fff;
+    width: 100%;
+    display: none;
+  }
+  .global-nav.active {
+    display: block;
+  }
+  .global-nav ul {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  /* ハンバーガー回転(簡易) */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* ===============================
+   Hero Section
+=============================== */
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.hero-image {
+  height: 250px;
+  margin-bottom: 1rem;
+}
+.hero-text h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ===============================
+   brand-intro
+=============================== */
+.brand-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.brand-intro .lead-text {
+  line-height: 1.8;
+}
+
+/* ===============================
+   product-list (Home & Products共通)
+=============================== */
+.product-list {
+  margin-bottom: 3rem;
+}
+.product-list h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+/* HomeやProductページで使うリード文 */
+.product-list .lead-text {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+/* ===============================
+   PRODUCT ITEM レイアウト
+=============================== */
+.product-item {
+  display: flex;
+  flex-wrap: wrap;
+  /* PC幅: 画像→テキスト (row) */
+  flex-direction: row;
+  margin-bottom: 2rem;
+  align-items: flex-start;
+}
+
+/* PC幅: reverseクラスで row-reverse */
+.product-item.reverse {
+  flex-direction: row-reverse;
+}
+
+/* SP幅: すべて column */
+@media(max-width: 767px) {
+  .product-item,
+  .product-item.reverse {
+    flex-direction: column;
+  }
+}
+
+/* 画像部分 */
+.product-img {
+  flex: 1 1 100%;
+  max-width: 300px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  min-height: 300px;
+}
+
+/* テキスト部分 */
+.product-info {
+  flex: 1 1 300px;
+}
+.product-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.product-info p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===============================
+   NEWS & INFORMATION
+=============================== */
+
+/* 既存のセクションなどのスタイル */
+.news-section {
+  margin-bottom: 3rem;
+}
+.news-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.news-list {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+.news-list li {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+.news-list span {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* NEWS全体の見出しなどは従来通り */
+.news-block {
+  margin-bottom: 3rem;
+}
+.news-block .section-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+/* 記事リスト */
+.news-article {
+  margin-bottom: 1.5rem;
+}
+.article-date {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+.article-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* ページネーション */
+.pagination ul {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 2rem 0 0;
+}
+.pagination li {
+  /* 各ページ番号の表示 */
+}
+.pagination a {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  color: #333;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.pagination a:hover {
+  background-color: #f0f0f0;
+}
+.pagination .active {
+  background-color: #333;
+  color: #fff;
+  pointer-events: none;  /* クリック不可 */
+  border-color: #333;
+}
+}
+/* ===============================
+   CTA
+=============================== */
+.cta-section {
+  margin-bottom: 3rem;
+}
+.cta-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+.cta-img {
+  flex: 1 1 100%;
+  max-width: 300px;
+  height: 200px;
+  margin: 0 auto;
+}
+.cta-text {
+  flex: 1 1 300px;
+}
+
+/* ===============================
+   FOOTER
+=============================== */
+.footer {
+  background-color: #f4f4f4;
+  padding: 1rem 0;
+  text-align: center;
+}
+.footer-social {
+  margin-bottom: 1rem;
+}
+.footer-links {
+  margin-bottom: 1rem;
+}
+.footer-links a {
+  margin: 0 0.5rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #333;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   PRODUCTS PAGE SPECIFIC
+=============================== */
+/* 特に .product-list や .product-item の重複記述は削除済み */
+/* ここでは必要に応じて、個別のリードテキストなどを追加 */
+
+ /*
+.product-list .lead-text {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+*/
+
+/* 他に追加の装飾があればここに */
+
+/* ===============================
+   NEWS PAGE SPECIFIC
+=============================== */
+.news-block {
+  margin-bottom: 2rem;
+}
+.news-article {
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+.news-article:last-child {
+  border-bottom: none;
+}
+.article-date {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+.article-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.article-body p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.article-body strong {
+  font-weight: bold;
+}
+
+/* ===============================
+   FAQ PAGE (Accordion Specific)
+=============================== */
+.faq-section {
+  margin-bottom: 3rem;
+}
+.faq-accordion {
+  margin-top: 1rem;
+}
+.faq-accordion-item {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+.faq-accordion-question {
+  display: block;
+  width: 100%;
+  background-color: #f7f7f7;
+  border: none;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+.faq-accordion-question:hover {
+  background-color: #e0e0e0;
+}
+.faq-accordion-answer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+  padding: 0 0.8rem;
+}
+.faq-accordion-answer p {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.faq-accordion-item.open .faq-accordion-question {
+  background-color: #ddd;
+}
+.faq-accordion-question {
+  position: relative; /* 相対位置 */
+  padding-right: 2rem; /* 右側にアイコン分の余白 */
+}
+
+/* 質問ボタン内のアイコン */
+.faq-accordion-question .accordion-icon {
+  position: absolute;
+  right: 0.8rem; /* 好みで調整 */
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* ===============================
+   CONTACT PAGE SPECIFIC
+=============================== */
+.contact-intro {
+  margin-bottom: 2rem;
+}
+.contact-form {
+  margin-bottom: 3rem;
+}
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea,
+.form-group select {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 800px; 
+}
+.form-group textarea {
+  resize: vertical;
+}
+.form-group select {
+  background-color: #fff;
+  cursor: pointer;
+}
+.submit-group {
+  text-align: center;
+}
+
+/* ===============================
+   LAW PAGE SPECIFIC
+=============================== */
+.law-section {
+  margin-bottom: 3rem;
+}
+.law-table dl {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+.law-table dl:last-child {
+  border-bottom: none;
+}
+.law-table dt {
+  flex: 0 0 160px; 
+  font-weight: bold;
+  margin-right: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+.law-table dd {
+  flex: 1 1 auto;
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .law-table dl {
+    display: flex;
+    flex-wrap: nowrap; /* ← 横幅が足りなくても折り返さない */
+    align-items: flex-start; /* 必要に応じて上揃え */
+  }
+  .law-table dt {
+    flex: 0 0 200px;  /* dtの固定幅を維持 */
+    margin-right: 1rem;
+    white-space: nowrap; /* 長い文字もなるべく折り返さない */
+  }
+  .law-table dd {
+    flex: 1 1 auto;   /* 残りのスペースを使う */
+  }
+}
+@media (max-width: 767px) {
+  .law-table dl {
+    flex-direction: column; 
+    flex-wrap: wrap; /* 縦並びに */
+  }
+  .law-table dt {
+    flex: none;
+    margin-bottom: 0.5rem;
+    white-space: normal; /* 折り返し可 */
+  }
+  .law-table dd {
+    margin-bottom: 0.8rem;
+  }
+}
+
+/* ===============================
+   TERMS PAGE SPECIFIC
+=============================== */
+.terms-section {
+  margin-bottom: 3rem;
+}
+.terms-section .section-title {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+.terms-section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+/* ===============================
+   PRIVACY PAGE SPECIFIC
+=============================== */
+.privacy-section {
+  margin-bottom: 3rem;
+}
+.privacy-section h2 {
+  font-size: 1.2rem;
+  margin: 2rem 0 1rem;
+  font-weight: bold;
+}
+.privacy-section h3 {
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.8rem;
+  font-weight: bold;
+}
+.privacy-section p {
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===============================
+   herb-peeling.html SPECIFIC
+=============================== */
+.product-detail {
+  margin-bottom: 2rem;
+}
+.offer-box {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  margin: 2rem 0;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.offer-img {
+  flex: 0 0 200px;
+  height: 200px;
+  background-color: #ccc;
+}
+.offer-info {
+  flex: 1 1 auto;
+}
+.icon-discount {
+  background-color: #ff3366;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+.btn-accordion {
+  display: inline-block;
+  margin-top: 8px;
+  background-color: #666;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.btn-accordion:hover {
+  background-color: #555;
+}
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+  background-color: #fcfcfc;
+  margin-top: 8px;
+  padding: 0 8px;
+}
+.accordion-content.open {
+  /* JSで height 設定 */
+}
+.section-title {
+  font-size: 1.2rem;
+  margin: 1.5rem 0 1rem;
+  font-weight: bold;
+}
+.effect-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.effect-list li {
+  background-color: #e6f7ff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.lineup-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.lineup-item {
+  flex: 0 0 200px;
+  background-color: #ccc;
+  height: 200px;
+}
+.ingredients-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+/* ===============================
+   COMPANY PAGE SPECIFIC
+=============================== */
+
+/* 会社概要セクション */
+.company-section {
+  margin-bottom: 3rem;
+}
+
+/* 会社イメージなどの仮画像 */
+.company-image {
+  background-color: #ccc;
+}
+
+/* 会社情報をdlで表示する例 */
+.company-table {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.company-table dt,
+.company-table dd {
+  padding: 0.8rem 0;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  line-height: 1.6;
+}
+
+/* PC幅ではdt, ddを左右に分割する例 */
+@media(min-width: 768px) {
+  .company-table dt {
+    flex: 0 0 150px;
+    font-weight: bold;
+  }
+  .company-table dd {
+    flex: 1 1 auto;
+    padding-left: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+/* 下線を最後に表示しない */
+.company-table dl:last-child {
+  border-bottom: none;
+}
+
+/* 会社メッセージ */
+.company-message {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ===============================
+   return-milk-serum.html SPECIFIC
+=============================== */
+/* 同様に必要な定義を残し、重複を省略 */
